@@ -14,20 +14,20 @@ return new class extends Migration
         Schema::table('quizzes', function (Blueprint $table) {
             // Adds the column to store custom questionnaire matrices as a JSON array
             if (!Schema::hasColumn('quizzes', 'custom_questions')) {
-                $table->json('custom_questions')->nullable()->after('description');
+                $table->json('custom_questions')->nullable();
             }
             
             // Adds scheduling opening and closing timestamp tracking windows
             if (!Schema::hasColumn('quizzes', 'starts_at')) {
-                $table->dateTime('starts_at')->nullable()->after('custom_questions');
+                $table->dateTime('starts_at')->nullable();
             }
             if (!Schema::hasColumn('quizzes', 'ends_at')) {
-                $table->dateTime('ends_at')->nullable()->after('starts_at');
+                $table->dateTime('ends_at')->nullable();
             }
             
             // Adds the status tracking field needed to open/close evaluations
             if (!Schema::hasColumn('quizzes', 'is_active')) {
-                $table->boolean('is_active')->default(true)->after('ends_at');
+                $table->boolean('is_active')->default(true);
             }
         });
     }

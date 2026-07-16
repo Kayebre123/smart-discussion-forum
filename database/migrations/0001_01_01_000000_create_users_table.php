@@ -22,8 +22,9 @@ return new class extends Migration
             $table->enum('role', ['administrator', 'lecturer', 'student'])->default('student');
             $table->string('status')->default('active'); // Supports active, suspended, restricted, blacklisted smoothly
             
-            // CRITICAL FIX: Link users to their structural tracking group cohort
-            $table->foreignId('group_id')->nullable()->constrained()->nullOnDelete();
+            // Group association is stored here and the foreign key is added later
+            // so the relationship is created only after the groups table exists.
+            $table->foreignId('group_id')->nullable();
             
             // Infraction & Governance Fields
             $table->integer('warnings_count')->default(0); // Holds warning increments

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('topics', function (Blueprint $table) {
             // Safe addition: nullable() ensures existing records aren't broken
-            $table->foreignId('group_id')->nullable()->after('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('group_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 

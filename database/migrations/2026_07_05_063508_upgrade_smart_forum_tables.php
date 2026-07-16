@@ -32,7 +32,7 @@ return new class extends Migration {
                 $table->boolean('is_resolved')->default(false);
             }
             if (!Schema::hasColumn('topics', 'accepted_reply_id')) {
-                $table->unsignedBigInteger('accepted_reply_id')->nullable();
+                $table->bigInteger('accepted_reply_id')->nullable();
             }
             if (!Schema::hasColumn('topics', 'moderation_status')) {
                 $table->string('moderation_status')->default('approved'); // approved, flagged_pending
