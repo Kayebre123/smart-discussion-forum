@@ -5,7 +5,7 @@ COPY package*.json ./
 RUN npm ci --no-audit --no-fund
 
 COPY . .
-RUN npm run build
+RUN  npm install && npm run build
 
 # Use the official PHP image with Apache
 FROM php:8.4-apache
