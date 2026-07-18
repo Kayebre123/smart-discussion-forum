@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // 1. Your Admin Account
-        User::updateOrCreate(
+        User::firstOrCreate(
             ['email' => 'nalubwamajoanjojo@gmail.com'],
             [
                 'name' => 'Joan Nalubwama',
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         );
 
         // 2. Put your actual LECTURER credentials here:
-        User::updateOrCreate(
+        User::firstOrCreate(
             ['email' => 'put-your-lecturer-email@gmail.com'], // <-- Change to your lecturer's email
             [
                 'name' => 'Lecturer Name Here',               // <-- Change to your lecturer's name
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         );
 
         // 3. Put your actual STUDENT credentials here:
-        User::updateOrCreate(
+        User::firstOrCreate(
             ['email' => 'put-your-student-email@gmail.com'],   // <-- Change to your student's email
             [
                 'name' => 'Student Name Here',                 // <-- Change to your student's name
