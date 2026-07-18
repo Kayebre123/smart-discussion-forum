@@ -1,3 +1,12 @@
+FROM node:20-bookworm AS build
+
+WORKDIR /var/www/html
+COPY package*.json ./
+RUN npm ci --no-audit --no-fund
+
+COPY . .
+RUN npm run build
+
 # Use the official PHP image with Apache
 FROM php:8.4-apache
 
@@ -26,6 +35,7 @@ WORKDIR /var/www/html
 
 # Copy the application code
 COPY . /var/www/html
+COPY --from=build /var/www/html/public/build /var/www/html/public/build
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
